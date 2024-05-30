@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/rose.png">
+    <title>Sliders</title>
+    <!-- importations  -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    
+  </head>
+
+  <body>
+    <header>
+     
+      <a href="#" id="toggleToolbar"><i class="fa-solid fa-caret-right"></i>Barre d'outils</i></a>
+      <div id="toolbar" style="display: none">
+        <button id="prevBtn"><i class="fas fa-arrow-left"></i></button>
+        <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+        <button id="nextBtn"><i class="fas fa-arrow-right"></i></button>
+        <button id="randomBtn"><i class="fas fa-random"></i></button>
+      </div>
+    </header>
+    <main>
+      <figure>
+        <figcaption id="imageTitle">A Beautiful Sunflower</figcaption>
+        <img
+          src="images/image1.jpg"
+          alt="A Picture of a sunflower "
+          id="mainImage"
+        />
+      </figure>
+      <div id="thumbnails">
+        <!-- <button>
+            <i class="fas fa-arrow-left"></i>
+            Page précédente  
+        </button> -->
+        <!-- The Thumbnails we be displayed here  -->
+        <!-- <button>
+            <i class="fas fa-arrow-right"></i>
+            Page suivante
+        </button> -->
+      </div>
+    </main>
+  </body>
+  <script src="scripts.js"></script>
+</html>
