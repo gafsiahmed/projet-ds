@@ -35,7 +35,7 @@ body {
 }
 
 header {
-    padding: 0 90px;
+    padding: 0 100px;
     height: 10%;
     display: flex;
     justify-content: space-between;
@@ -54,6 +54,12 @@ header a {
     gap: 20px;
     text-decoration: none;
     padding: 10px;
+   
+}
+
+header a:hover {
+    color: #333;
+    animation : rightToLeft 0.5s forwards;
 }
 main {
     height: 90%;
@@ -100,14 +106,102 @@ figcaption {
     width: fit-content;
     gap: 10px;
     margin-top: 20px;
- 
-    border-radius: 7px;
-    background-color: #f5f5f5;
-    box-shadow: -10px 10px 30px rgba(0, 0, 3, 0.7);
-  
 }
 
+#thumbnailContainer {
+    padding :10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 7px;
+    box-shadow: -10px 10px 30px rgba(0, 0, 3, 0.7);
+}
+
+#prevPage,#nextPage {
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 7px;
+    box-shadow: -10px 6px 40px rgba(0, 0, 6, 0.5);
+    /* border: solid 1px #333; */
+    cursor: pointer;
+}
+
+@keyframes leftToRight {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes rightToLeft {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+    
+}
+
+
+
+#prevPage:hover {
+    background: #333;
+    color: white;
+    animation-name: leftToRight;
+    animation : leftToRight 0.5s forwards;
+}
+
+#nextPage:hover {
+    background: #333;
+    color: white;
+    animation-name: rightToLeft;
+    animation : rightToLeft 0.5s forwards;
+}
+
+#toolbar button i {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@keyframes toolbarBtnRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+  25% {
+    transform: rotate(10deg);
+  }
+    50% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+    
+}
+
+#toolbar button i:hover {
+    color: #333;
+    scale : 1.2;
+    animation: toolbarBtnRotate 0.5s forwards;
+}
 #thumbnails img {
+    color: white;
     width: 100px;
     cursor: pointer;
     border-radius: 7px;
@@ -116,6 +210,8 @@ figcaption {
 #thumbnails img:hover {
     scale: 1.1;
     transition: 0.5s;
+    box-shadow: -10px 10px 30px rgba(0, 0, 3, 0.7);
+    animation: toolbarBtnRotate 0.5s forwards;
 }
 
 #toolbar {
@@ -135,3 +231,47 @@ button:focus {
 }
 
 
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0 20px;
+    }
+    header a {
+        font-size: 20px;
+    }
+    main {
+        padding: 0 20px;
+        flex-direction: row;
+    }
+    header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #mainImage {
+        width: 350px;
+        height: 220px;
+        margin: 10px;
+        
+    }
+    #thumbnails {
+        flex-direction: column;
+        order: 1;
+    
+    }
+    figure {
+        order: 2;
+        /* padding: 3px; */
+    }
+    #thumbnails #thumbnailContainer {
+        flex-direction: column;
+        
+    }
+    #thumbnails img {
+        width: 60px;
+        flex-direction: column;
+    }
+    #prevPage,#nextPage {
+        font-size: 8px;
+    }
+    
+}

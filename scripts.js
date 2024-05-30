@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const thumbnails = document.getElementById("thumbnails");
+  const thumbnailContainer = document.getElementById("thumbnailContainer");
   const toolbar = document.getElementById("toolbar");
   const toggleToolbar = document.getElementById("toggleToolbar");
 
@@ -10,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const playPauseBtn = document.getElementById("playPauseBtn");
   const nextBtn = document.getElementById("nextBtn");
   const randomBtn = document.getElementById("randomBtn");
+
+  const nextPageBtn = document.getElementById("nextPage");
+  const prevPageBtn = document.getElementById("prevPage");
 
   let currentImageIndex = 0;
   let isPlaying = false;
@@ -80,9 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
         currentImageIndex = index;
         updateMainImage(index);
       });
-        thumbnails.appendChild(thumbnail);
+      thumbnailContainer.appendChild(thumbnail);
     });
-    thumbnails.appendChild(previvousBtn);
   }
 
   // -------------- Function TogglePlayPause  ---------------
@@ -108,8 +111,27 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("randomImage clicked");
     let randomIndex;
     randomIndex = Math.floor(Math.random() * images.length);
-    console.log("random :",randomIndex,"current : ", currentImageIndex);
+    console.log(
+      `
+      current index: ${currentImageIndex}
+      random index: ${randomIndex}
+      length: ${images.length}
+      `
+    );
+    console.log("random :", randomIndex, "current : ", currentImageIndex);
     currentImageIndex = randomIndex;
+    updateMainImage(currentImageIndex);
+  }
+
+  function nextPage() {
+    console.log("nextPage clicked");
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    updateMainImage(currentImageIndex);
+  }
+
+  function prevPage() {
+    console.log("prevPage clicked");
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
     updateMainImage(currentImageIndex);
   }
 
@@ -129,17 +151,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // The previous and next buttons event listeners
-  prevBtn.addEventListener("click", () => {
-    console.log("prev button clicked");
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    updateMainImage(currentImageIndex);
-  });
+  prevBtn.addEventListener("click", prevPage);
+  prevPageBtn.addEventListener("click", prevPage);
 
-  nextBtn.addEventListener("click", () => {
-    console.log("next button clicked");
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    updateMainImage(currentImageIndex);
-  });
+  nextPageBtn.addEventListener("click", nextPage);
+  nextBtn.addEventListener("click", nextPage);
 
   playPauseBtn.addEventListener("click", togglePlayPause);
   randomBtn.addEventListener("click", randomImage);
